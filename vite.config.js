@@ -17,13 +17,39 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
+    commonjsOptions: {
+      include: [/node_modules/],
+      transformMixedEsModules: true,
+    },
     rollupOptions: {
       output: {
         manualChunks: {
           'vendor': ['react', 'react-dom'],
-          'sui': ['@mysten/dapp-kit', '@mysten/sui'],
+          'sui-sdk': ['@mysten/sui/client', '@mysten/sui/transactions'],
+          'dapp-kit': ['@mysten/dapp-kit'],
         }
       }
     }
-  }
+  },
+  optimizeDeps: {
+    include: [
+      '@mysten/sui/client',
+      '@mysten/sui/transactions', 
+      '@mysten/sui/utils',
+      '@mysten/dapp-kit',
+      '@tanstack/react-query',
+      'axios'
+    ],
+    esbuildOptions: {
+      target: 'esnext',
+      define: {
+        global: 'globalThis'
+      }
+    }
+  },
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
 });
