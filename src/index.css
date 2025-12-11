@@ -2,93 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global glassmorphism styles */
-.glass-card {
-  @apply bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-}
-
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  color: white;
+* {
   margin: 0;
   padding: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
   box-sizing: border-box;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+html, body, #root {
+  height: 100%;
+  width: 100%;
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #0f172a via-blue-900 to-purple-900);
+  color: #e2e8f0;
+  min-height: 100vh;
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
+/* Glass morphism effect */
+.glass {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: 16px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+.btn-primary {
+  @apply px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all duration-200 ease-in-out;
 }
 
-/* Button hover effects */
-button {
-  transition: all 0.3s ease;
+.btn-primary:active {
+  @apply transform scale-95;
 }
 
-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+.badge-legit {
+  @apply bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-sm font-medium border border-green-500/30;
 }
 
-button:active:not(:disabled) {
-  transform: translateY(0);
+.badge-scam {
+  @apply bg-red-500/20 text-red-300 px-3 py-1 rounded-full text-sm font-medium border border-red-500/30;
 }
 
-/* Input focus effects */
-input:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(0, 163, 255, 0.3);
+.badge-unknown {
+  @apply bg-gray-500/20 text-gray-300 px-3 py-1 rounded-full text-sm font-medium border border-gray-500/30;
 }
 
-/* Animation classes */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in {
-  animation: fadeIn 0.3s ease-out;
-}
-
-/* Loading spinner */
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.spinner {
-  animation: spin 1s linear infinite;
+input, textarea {
+  @apply bg-slate-800 border border-slate-600 text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none;
 }
