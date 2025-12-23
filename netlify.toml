@@ -3,7 +3,6 @@
   publish = "dist"
   functions = "netlify/functions"
 
-# This ensures Netlify treats your code as a modern ES Module
 [functions]
   node_bundler = "esbuild"
 
